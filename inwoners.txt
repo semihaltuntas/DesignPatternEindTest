@@ -1,0 +1,6 @@
+V Kanarie
+Z Kat
+V Vogel
+Z Hond
+V Kraai
+Z Leeuw
