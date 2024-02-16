@@ -14,13 +14,13 @@ public class Zoogdier extends InwonersEiland {
 
     @Override
     public void reageerStartVulkaanuitbarsting() {
-        System.out.println("\t" + getNaam() + " reagert door in hun hol te schuilen.");
+        System.out.println("\t"+"-> "  + getNaam() + " reageert door in hun hol te schuilen.");
 
     }
 
     @Override
     public void reageerStopVulkaanuitbarsting() {
-        System.out.println("\t" + getNaam() + " reagert door terug te keren naar hun holen.");
+        System.out.println("\t"+"-> " + getNaam() + " reageert door van hun schuilen naar buiten te gaan.");
 
     }
 }

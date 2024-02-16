@@ -12,13 +12,13 @@ public class Vogel extends InwonersEiland {
 
     @Override
     public void reageerStartVulkaanuitbarsting() {
-        System.out.println("\t"+ getNaam() + " reager hierop door hoger op te vliegen ");
+        System.out.println("\t" + "-> " + getNaam() + " reageert hierop door hoger op te vliegen ");
 
     }
 
     @Override
     public void reageerStopVulkaanuitbarsting() {
-        System.out.println("\t"+ getNaam() + " reager door laag te vliegen ");
+        System.out.println("\t" + "-> " + getNaam() + " reageert door laag te vliegen ");
     }
 }
 

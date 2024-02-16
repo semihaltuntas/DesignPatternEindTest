@@ -4,6 +4,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Vulkaan {
+
+
     public enum ToestandTypeVanVulkaan {
         ACTİEF,
         NONACTİEF,
@@ -28,7 +30,11 @@ public class Vulkaan {
         vulkaanObservers.add(observer);
     }
 
- public    void startMetUitBarsten() {
+    public void deleteVulkaanObserver(VulkaanObserver observer) {
+        vulkaanObservers.remove(observer);
+    }
+
+    public void startMetUitBarsten() {
         if (!vulkaanObservers.isEmpty() && toestand.equals(ToestandTypeVanVulkaan.NONACTİEF)) {
             System.out.println("Vulkaan " + naam + " begint uit te barsten.");
             vulkaanObservers.forEach(observer -> observer.ontsnappenUitVulkaan(this));
@@ -36,13 +42,11 @@ public class Vulkaan {
         toestand = ToestandTypeVanVulkaan.ACTİEF;
     }
 
-   public void stopMetUitBarsten() {
+    public void stopMetUitBarsten() {
         if (!vulkaanObservers.isEmpty() && toestand.equals(ToestandTypeVanVulkaan.ACTİEF)) {
             System.out.println("Vulkaan " + naam + " stopt uitbarsten");
             vulkaanObservers.forEach(observer -> observer.stopOntsnappenVanVulkaan(this));
         }
         toestand = ToestandTypeVanVulkaan.NONACTİEF;
     }
-
-
 }

@@ -48,15 +48,15 @@ public enum Eiland {
                 }
                 regel = br.readLine();
             }
-          //  inwonersVAnEiland.forEach(System.out::println);
+            //  inwonersVAnEiland.forEach(System.out::println);
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
-    public void voegVulkaanToe(Vulkaan vulkaan){
-        if (vulkaan != null){
+    public void voegVulkaanToe(Vulkaan vulkaan) {
+        if (vulkaan != null) {
             vulkaans.add(vulkaan);
             inwonersVAnEiland.forEach(vulkaan::voegVulkaanObserverToe);
         }

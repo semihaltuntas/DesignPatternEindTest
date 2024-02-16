@@ -5,7 +5,7 @@ import be.vdab.eiland.inwoners.InwonersEiland;
 
 public class Main {
     public static void main(String[] args) {
-        Eiland eiland =  Eiland.INSTANCE;
+        Eiland eiland = Eiland.INSTANCE;
         String path = "inwoners.txt";
 
         eiland.voegEilandBewonerToeAanEiland(path);
@@ -14,19 +14,19 @@ public class Main {
         Vulkaan vulkaan = new Vulkaan("Etna");
         eiland.voegVulkaanToe(vulkaan);
 
-        InwonersEiland newInwoner= eiland.getBewoner(InwonerType.V,"Leeuw");
+        InwonersEiland newInwoner = eiland.getBewoner(InwonerType.V, "Vleermuis");
         eiland.voegEilandInwonerToe(newInwoner);
-        System.out.println("***********");
+        System.out.println("------");
         eiland.getInwonersVAnEiland().forEach(System.out::println);
 
 
-        eiland.getInwonersVAnEiland().forEach((bewoner)->vulkaan.voegVulkaanObserverToe(bewoner));
-        System.out.println("**********************");
+        eiland.getInwonersVAnEiland().forEach((bewoner) -> vulkaan.voegVulkaanObserverToe(bewoner));
+        System.out.println("------");
         vulkaan.getVulkaanObservers().forEach(System.out::println);
 
 
         vulkaan.startMetUitBarsten();
-        System.out.println("*************");
+        System.out.println("------");
         vulkaan.stopMetUitBarsten();
 
 
