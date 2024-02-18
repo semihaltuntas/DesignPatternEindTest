@@ -3,16 +3,22 @@ import be.vdab.eiland.events.Vulkaan;
 import be.vdab.eiland.inwoners.InwonerType;
 import be.vdab.eiland.inwoners.InwonersEiland;
 
-public class Main {
-    public static void main(String[] args) {
-        Eiland eiland = Eiland.INSTANCE;
-        String path = "inwoners.txt";
+import java.nio.file.Path;
 
-        eiland.voegEilandBewonerToeAanEiland(path);
+public class Main {
+
+
+    public static void main(String[] args) {
+
+        Eiland eiland = Eiland.INSTANCE;
+
+        Path PATH = Path.of("inwoners.txt");
+
+        eiland.voegEilandBewonerToeAanEiland(String.valueOf(PATH));
         eiland.getInwonersVAnEiland().forEach(System.out::println);
 
-        Vulkaan vulkaan = new Vulkaan("Etna");
-        eiland.voegVulkaanToe(vulkaan);
+        Vulkaan etna = new Vulkaan("Etna");
+        eiland.voegVulkaanToe(etna);
 
         InwonersEiland newInwoner = eiland.getBewoner(InwonerType.V, "Vleermuis");
         eiland.voegEilandInwonerToe(newInwoner);
@@ -20,14 +26,14 @@ public class Main {
         eiland.getInwonersVAnEiland().forEach(System.out::println);
 
 
-        eiland.getInwonersVAnEiland().forEach((bewoner) -> vulkaan.voegVulkaanObserverToe(bewoner));
+        eiland.getInwonersVAnEiland().forEach((bewoner) -> etna.voegVulkaanObserverToe(bewoner));
         System.out.println("------");
-        vulkaan.getVulkaanObservers().forEach(System.out::println);
+        etna.getVulkaanObservers().forEach(System.out::println);
 
 
-        vulkaan.startMetUitBarsten();
+        etna.startMetUitBarsten();
         System.out.println("------");
-        vulkaan.stopMetUitBarsten();
+        etna.stopMetUitBarsten();
 
 
     }
