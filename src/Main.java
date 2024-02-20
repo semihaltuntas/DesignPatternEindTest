@@ -1,4 +1,5 @@
 import be.vdab.eiland.Eiland;
+import be.vdab.eiland.events.TsunamiAlarm;
 import be.vdab.eiland.events.Vulkaan;
 import be.vdab.eiland.inwoners.InwonerType;
 import be.vdab.eiland.inwoners.InwonersEiland;
@@ -25,7 +26,7 @@ public class Main {
         System.out.println("------");
         eiland.getInwonersVAnEiland().forEach(System.out::println);
 
-        InwonersEiland newInwoner1= eiland.getBewoner(InwonerType.M,"Burak");
+        InwonersEiland newInwoner1 = eiland.getBewoner(InwonerType.M, "Burak");
         eiland.voegEilandInwonerToe(newInwoner1);
         System.out.println("------");
         eiland.getInwonersVAnEiland().forEach(System.out::println);
@@ -35,11 +36,17 @@ public class Main {
         System.out.println("------");
         etna.getVulkaanObservers().forEach(System.out::println);
 
-
+        System.out.println("********Vulkaan**********");
         etna.startMetUitBarsten();
-        System.out.println("------");
         etna.stopMetUitBarsten();
 
+        System.out.println("********Tsunami***********");
 
+        TsunamiAlarm tsunami = new TsunamiAlarm("Hokkaido");
+        eiland.voegTsunamiToe(tsunami);
+
+        tsunami.notifyToestandZeeTreektTerug();
+        tsunami.notifyToestandZeeOverspoeltEiland();
+        tsunami.notifyToestandZeeEilandDroogtOp();
     }
 }

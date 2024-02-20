@@ -1,5 +1,7 @@
 package be.vdab.eiland;
 
+import be.vdab.eiland.events.TsunamiAlarm;
+import be.vdab.eiland.events.TsunamiAlarmObserver;
 import be.vdab.eiland.events.Vulkaan;
 import be.vdab.eiland.inwoners.*;
 
@@ -15,6 +17,7 @@ public enum Eiland {
 
     private final Set<InwonersEiland> inwonersVAnEiland = new LinkedHashSet<>();
     public Set<Vulkaan> vulkaans = new LinkedHashSet<>();
+    private TsunamiAlarm tsunamiAlarms = new TsunamiAlarm("");
 
     public Set<InwonersEiland> getInwonersVAnEiland() {
         return inwonersVAnEiland;
@@ -57,6 +60,17 @@ public enum Eiland {
         if (vulkaan != null) {
             vulkaans.add(vulkaan);
             inwonersVAnEiland.forEach(vulkaan::voegVulkaanObserverToe);
+        }
+    }
+
+    public void voegTsunamiToe(TsunamiAlarm tsunami) {
+        if (tsunami != null) {
+            tsunamiAlarms = tsunami;
+            for (var bewoner : inwonersVAnEiland) {
+                if (bewoner instanceof TsunamiAlarmObserver) {
+                    tsunamiAlarms.addTsunamiObservers((TsunamiAlarmObserver) bewoner);
+                }
+            }
         }
     }
 
