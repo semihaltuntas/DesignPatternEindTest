@@ -25,6 +25,11 @@ public class Main {
         System.out.println("------");
         eiland.getInwonersVAnEiland().forEach(System.out::println);
 
+        InwonersEiland newInwoner1= eiland.getBewoner(InwonerType.M,"Burak");
+        eiland.voegEilandInwonerToe(newInwoner1);
+        System.out.println("------");
+        eiland.getInwonersVAnEiland().forEach(System.out::println);
+
 
         eiland.getInwonersVAnEiland().forEach((bewoner) -> etna.voegVulkaanObserverToe(bewoner));
         System.out.println("------");

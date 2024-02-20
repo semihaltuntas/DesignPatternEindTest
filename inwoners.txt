@@ -4,3 +4,6 @@ V Vogel
 Z Hond
 V Kraai
 Z Leeuw
+M Semih
+M Jutta
+M Frank

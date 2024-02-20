@@ -1,10 +1,7 @@
 package be.vdab.eiland;
 
 import be.vdab.eiland.events.Vulkaan;
-import be.vdab.eiland.inwoners.InwonerType;
-import be.vdab.eiland.inwoners.InwonersEiland;
-import be.vdab.eiland.inwoners.Vogel;
-import be.vdab.eiland.inwoners.Zoogdier;
+import be.vdab.eiland.inwoners.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -31,6 +28,7 @@ public enum Eiland {
         return switch (soort) {
             case V -> new Vogel(naam);
             case Z -> new Zoogdier(naam);
+            case M -> new Mens(naam);
         };
     }
 

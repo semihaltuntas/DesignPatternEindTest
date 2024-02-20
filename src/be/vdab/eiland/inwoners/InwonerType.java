@@ -2,7 +2,8 @@ package be.vdab.eiland.inwoners;
 
 public enum InwonerType {
     V("Vogel"),
-    Z("Zoogdier");
+    Z("Zoogdier"),
+    M("Mensen");
     public String type;
 
     InwonerType(String type) {
