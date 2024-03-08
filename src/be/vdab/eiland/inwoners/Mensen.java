@@ -1,40 +1,36 @@
 package be.vdab.eiland.inwoners;
 
 import be.vdab.eiland.events.TornadoAlarmObserver;
-import be.vdab.eiland.events.Vulkaan;
-import be.vdab.eiland.events.VulkaanObserver;
 
-public class Vogel extends InwonersEiland implements TornadoAlarmObserver {
+public  class Mensen extends InwonersEiland implements TornadoAlarmObserver {
 
-
-    public Vogel(String naam) {
+    public Mensen(String naam) {
         super(naam);
     }
 
     @Override
     public void reageerStartVulkaanuitbarsting() {
-        System.out.println("\t" + "-> " + getNaam() + " reageert hierop door hoger op te vliegen ");
-
+        System.out.println("\t" + "-> " + getNaam() + " reageert door naar hun huis te komen");
     }
 
     @Override
     public void reageerStopVulkaanuitbarsting() {
-        System.out.println("\t" + "-> " + getNaam() + " reageert door laag te vliegen ");
+        System.out.println("\t" + "-> " + getNaam() + " reageert door uit te gaan");
     }
 
 
     public void reageerOpkomstVanTornadoOpEiland() {
-        System.out.println("\t" + "-> " + getNaam() + " reageert door zo ver mogelijk te vliegen");
+        System.out.println("\t" + "-> " + getNaam() + " reageert door naar de dreigende lucht te kijken");
     }
 
     public void reageerActiefTornadoOpEiland() {
-        System.out.println("\t" + "-> " + getNaam() + " reageert door niets aan te doen");
+        System.out.println("\t" + "-> " + getNaam() + " reageert door in de kelder van zijn/haar huis te zitten");
     }
-
 
     public void reageerStoptTornadoOpEiland() {
-        System.out.println("\t" + "-> " + getNaam() + " reageert door terug te keren");
+        System.out.println("\t" + "-> " + getNaam() + " reageert door uit zijn/haar kelder te komen");
     }
+
 
     @Override
     public void tornadoOpKomstNaarEiland() {
@@ -52,6 +48,3 @@ public class Vogel extends InwonersEiland implements TornadoAlarmObserver {
         reageerStoptTornadoOpEiland();
     }
 }
-
-
-

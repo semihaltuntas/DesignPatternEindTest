@@ -1,10 +1,8 @@
 package be.vdab.eiland.inwoners;
 
-import be.vdab.eiland.events.TsunamiAlarmObserver;
-import be.vdab.eiland.events.Vulkaan;
-import be.vdab.eiland.events.VulkaanObserver;
+import be.vdab.eiland.events.TornadoAlarmObserver;
 
-public class Zoogdier extends InwonersEiland implements TsunamiAlarmObserver {
+public class Zoogdier extends InwonersEiland implements TornadoAlarmObserver {
 
 
     public Zoogdier(String naam) {
@@ -24,32 +22,32 @@ public class Zoogdier extends InwonersEiland implements TsunamiAlarmObserver {
 
     }
 
-    public void reageerZeeOverSpoeltEiLand() {
-        System.out.println("\t" + "-> " + getNaam() + " reageert kruipen in de bomen");
-    }
-
-    public void reageerZeeTrektZichTerug() {
+    public void reageerOpkomstVanTornadoOpEiland() {
         System.out.println("\t" + "-> " + getNaam() + " reageert worden nerveus");
     }
 
-    public void reageerEilandDroogOp() {
-        System.out.println("\t" + "-> " + getNaam() + " reageert komen uit de bomen");
+    public void reageerActiefTornadoOpEiland() {
+        System.out.println("\t" + "-> " + getNaam() + " reageert door in zijn hol te zitten");
+    }
+
+
+    public void reageerStoptTornadoOpEiland() {
+        System.out.println("\t" + "-> " + getNaam() + " reageert uit zijn hol door terug te komen");
     }
 
 
     @Override
-    public void zeeOverSpoeltEiland() {
-        this.reageerZeeOverSpoeltEiLand();
-
+    public void tornadoOpKomstNaarEiland() {
+        reageerOpkomstVanTornadoOpEiland();
     }
 
     @Override
-    public void zeeTrektZichTerug() {
-        this.reageerZeeTrektZichTerug();
+    public void tornadoActiefOpEiland() {
+        reageerActiefTornadoOpEiland();
     }
 
     @Override
-    public void eilandDroogtOp() {
-        this.reageerEilandDroogOp();
+    public void tornadoStopt() {
+        reageerStoptTornadoOpEiland();
     }
 }

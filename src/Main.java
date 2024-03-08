@@ -1,5 +1,6 @@
 import be.vdab.eiland.Eiland;
-import be.vdab.eiland.events.TsunamiAlarm;
+import be.vdab.eiland.EilandFactory;
+import be.vdab.eiland.events.TornadoAlarm;
 import be.vdab.eiland.events.Vulkaan;
 import be.vdab.eiland.inwoners.InwonerType;
 import be.vdab.eiland.inwoners.InwonersEiland;
@@ -15,38 +16,29 @@ public class Main {
 
         Path PATH = Path.of("inwoners.txt");
 
-        eiland.voegEilandBewonerToeAanEiland(String.valueOf(PATH));
-        eiland.getInwonersVAnEiland().forEach(System.out::println);
+        EilandFactory factory = EilandFactory.INSTANCE;
+        factory.voegEilandBewonerToeAanEiland(String.valueOf(PATH),eiland);
 
         Vulkaan etna = new Vulkaan("Etna");
         eiland.voegVulkaanToe(etna);
-
-        InwonersEiland newInwoner = eiland.getBewoner(InwonerType.V, "Vleermuis");
-        eiland.voegEilandInwonerToe(newInwoner);
-        System.out.println("------");
-        eiland.getInwonersVAnEiland().forEach(System.out::println);
-
-        InwonersEiland newInwoner1 = eiland.getBewoner(InwonerType.M, "Burak");
-        eiland.voegEilandInwonerToe(newInwoner1);
-        System.out.println("------");
-        eiland.getInwonersVAnEiland().forEach(System.out::println);
 
 
         eiland.getInwonersVAnEiland().forEach((bewoner) -> etna.voegVulkaanObserverToe(bewoner));
         System.out.println("------");
         etna.getVulkaanObservers().forEach(System.out::println);
 
-        System.out.println("********Vulkaan**********");
+        System.out.println("********VULKAAN**********");
+
         etna.startMetUitBarsten();
         etna.stopMetUitBarsten();
 
-        System.out.println("********Tsunami***********");
+        System.out.println("********TORNADO***********");
 
-        TsunamiAlarm tsunami = new TsunamiAlarm("Hokkaido");
-        eiland.voegTsunamiToe(tsunami);
+        TornadoAlarm tornado = new TornadoAlarm("De Tri-State");
+        eiland.voegTornadoToe(tornado);
 
-        tsunami.notifyToestandZeeTreektTerug();
-        tsunami.notifyToestandZeeOverspoeltEiland();
-        tsunami.notifyToestandZeeEilandDroogtOp();
+        tornado.notifyToestandOpkomstVanTornadoOpEiland();
+        tornado.notifyToestandActiefTornadoOpEiland();
+        tornado.notifyToestandStoptTornadoOpEiland();
     }
 }

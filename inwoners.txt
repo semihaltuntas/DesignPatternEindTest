@@ -1,9 +1,12 @@
 V Kanarie
-Z Kat
 V Vogel
-Z Hond
 V Kraai
+Z Kat
+Z Hond
 Z Leeuw
 M Semih
 M Jutta
 M Frank
+B Mol
+B Regenworm
+B Kever

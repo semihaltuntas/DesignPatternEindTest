@@ -1,14 +1,13 @@
 package be.vdab.eiland;
 
-import be.vdab.eiland.events.TsunamiAlarm;
-import be.vdab.eiland.events.TsunamiAlarmObserver;
+import be.vdab.eiland.events.TornadoAlarm;
+import be.vdab.eiland.events.TornadoAlarmObserver;
 import be.vdab.eiland.events.Vulkaan;
 import be.vdab.eiland.inwoners.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -17,7 +16,7 @@ public enum Eiland {
 
     private final Set<InwonersEiland> inwonersVAnEiland = new LinkedHashSet<>();
     public Set<Vulkaan> vulkaans = new LinkedHashSet<>();
-    private TsunamiAlarm tsunamiAlarms = new TsunamiAlarm("");
+    private TornadoAlarm tornadoAlarms = new TornadoAlarm("");
 
     public Set<InwonersEiland> getInwonersVAnEiland() {
         return inwonersVAnEiland;
@@ -27,53 +26,27 @@ public enum Eiland {
         return vulkaans;
     }
 
-    public InwonersEiland getBewoner(InwonerType soort, String naam) {
-        return switch (soort) {
-            case V -> new Vogel(naam);
-            case Z -> new Zoogdier(naam);
-            case M -> new Mens(naam);
-        };
+
+
+    public void voegEilandBewonerToe(InwonersEiland inwoners){
+        inwonersVAnEiland.add(inwoners);
     }
-
-    public void voegEilandBewonerToeAanEiland(String path) {
-        try (var br = new BufferedReader(new FileReader(path))) {
-            String regel = br.readLine();
-            while (regel != null) {
-                var splits = regel.split(" ");
-                if (splits.length == 2) {
-                    String soortInwoner = splits[0];
-                    String naam = splits[1];
-                    //  System.out.println(soortInwoner);
-                    //  System.out.println(naam);
-                    inwonersVAnEiland.add(getBewoner(InwonerType.valueOf(soortInwoner), naam));
-                }
-                regel = br.readLine();
-            }
-            //  inwonersVAnEiland.forEach(System.out::println);
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
     public void voegVulkaanToe(Vulkaan vulkaan) {
         if (vulkaan != null) {
             vulkaans.add(vulkaan);
             inwonersVAnEiland.forEach(vulkaan::voegVulkaanObserverToe);
         }
     }
-
-    public void voegTsunamiToe(TsunamiAlarm tsunami) {
+    public void voegTornadoToe(TornadoAlarm tsunami) {
         if (tsunami != null) {
-            tsunamiAlarms = tsunami;
+            tornadoAlarms = tsunami;
             for (var bewoner : inwonersVAnEiland) {
-                if (bewoner instanceof TsunamiAlarmObserver) {
-                    tsunamiAlarms.addTsunamiObservers((TsunamiAlarmObserver) bewoner);
+                if (bewoner instanceof TornadoAlarmObserver) {
+                    tornadoAlarms.addTsunamiObservers((TornadoAlarmObserver) bewoner);
                 }
             }
         }
     }
-
     public void voegEilandInwonerToe(InwonersEiland inwoner) {
         if (inwoner != null) {
             inwonersVAnEiland.add(inwoner);
